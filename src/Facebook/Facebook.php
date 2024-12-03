@@ -330,7 +330,7 @@ class Facebook
      *
      * @throws FacebookSDKException
      */
-    public function get($endpoint, $accessToken = null, $eTag = null, $graphVersion = null)
+    public function get($endpoint, AccessToken|string|null $accessToken = null, ?string $eTag = null, ?string $graphVersion = null)
     {
         return $this->sendRequest(
             'GET',
@@ -355,7 +355,7 @@ class Facebook
      *
      * @throws FacebookSDKException
      */
-    public function post($endpoint, array $params = [], $accessToken = null, $eTag = null, $graphVersion = null)
+    public function post($endpoint, array $params = [], AccessToken|string|null $accessToken = null, ?string $eTag = null, ?string $graphVersion = null)
     {
         return $this->sendRequest(
             'POST',
@@ -380,7 +380,7 @@ class Facebook
      *
      * @throws FacebookSDKException
      */
-    public function delete($endpoint, array $params = [], $accessToken = null, $eTag = null, $graphVersion = null)
+    public function delete($endpoint, array $params = [], AccessToken|string|null $accessToken = null, ?string $eTag = null, ?string $graphVersion = null)
     {
         return $this->sendRequest(
             'DELETE',
@@ -460,7 +460,7 @@ class Facebook
      *
      * @throws FacebookSDKException
      */
-    public function sendRequest($method, $endpoint, array $params = [], $accessToken = null, $eTag = null, $graphVersion = null)
+    public function sendRequest($method, $endpoint, array $params = [], AccessToken|string|null $accessToken = null, ?string $eTag = null, ?string $graphVersion = null)
     {
         $accessToken = $accessToken ?: $this->defaultAccessToken;
         $graphVersion = $graphVersion ?: $this->defaultGraphVersion;
@@ -480,7 +480,7 @@ class Facebook
      *
      * @throws FacebookSDKException
      */
-    public function sendBatchRequest(array $requests, $accessToken = null, $graphVersion = null)
+    public function sendBatchRequest(array $requests, AccessToken|string|null $accessToken = null, ?string $graphVersion = null)
     {
         $accessToken = $accessToken ?: $this->defaultAccessToken;
         $graphVersion = $graphVersion ?: $this->defaultGraphVersion;
@@ -502,7 +502,7 @@ class Facebook
      * @param  string|null             $graphVersion The Graph API version to use.
      * @return FacebookBatchRequest
      */
-    public function newBatchRequest($accessToken = null, $graphVersion = null)
+    public function newBatchRequest(AccessToken|string|null $accessToken = null, ?string $graphVersion = null)
     {
         $accessToken = $accessToken ?: $this->defaultAccessToken;
         $graphVersion = $graphVersion ?: $this->defaultGraphVersion;
@@ -529,7 +529,7 @@ class Facebook
      *
      * @throws FacebookSDKException
      */
-    public function request($method, $endpoint, array $params = [], $accessToken = null, $eTag = null, $graphVersion = null)
+    public function request($method, $endpoint, array $params = [], AccessToken|string|null $accessToken = null, ?string $eTag = null, ?string $graphVersion = null)
     {
         $accessToken = $accessToken ?: $this->defaultAccessToken;
         $graphVersion = $graphVersion ?: $this->defaultGraphVersion;
@@ -587,7 +587,7 @@ class Facebook
      *
      * @throws FacebookSDKException
      */
-    public function uploadVideo($target, $pathToFile, $metadata = [], $accessToken = null, $maxTransferTries = 5, $graphVersion = null)
+    public function uploadVideo($target, $pathToFile, $metadata = [], ?string $accessToken = null, $maxTransferTries = 5, ?string $graphVersion = null)
     {
         $accessToken = $accessToken ?: $this->defaultAccessToken;
         $graphVersion = $graphVersion ?: $this->defaultGraphVersion;

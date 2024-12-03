@@ -54,7 +54,7 @@ class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate,
      * @param AccessToken|string|null $accessToken
      * @param string|null             $graphVersion
      */
-    public function __construct(FacebookApp $app = null, array $requests = [], $accessToken = null, $graphVersion = null)
+    public function __construct(FacebookApp $app = null, array $requests = [], AccessToken|string|null $accessToken = null, ?string $graphVersion = null)
     {
         parent::__construct($app, $accessToken, 'POST', '', [], null, $graphVersion);
 
@@ -72,7 +72,7 @@ class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate,
      *
      * @throws \InvalidArgumentException
      */
-    public function add($request, $options = null)
+    public function add($request, string|null|array $options = null)
     {
         if (is_array($request)) {
             foreach ($request as $key => $req) {
@@ -241,7 +241,7 @@ class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate,
      *
      * @return array
      */
-    public function requestEntityToBatchArray(FacebookRequest $request, $options = null, $attachedFiles = null)
+    public function requestEntityToBatchArray(FacebookRequest $request, string|null|array $options = null, ?string $attachedFiles = null)
     {
 
         if (null === $options) {

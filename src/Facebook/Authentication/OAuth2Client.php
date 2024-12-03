@@ -76,7 +76,7 @@ class OAuth2Client
      * @param FacebookClient $client
      * @param string|null    $graphVersion The version of the Graph API to use.
      */
-    public function __construct(FacebookApp $app, FacebookClient $client, $graphVersion = null)
+    public function __construct(FacebookApp $app, FacebookClient $client, ?string $graphVersion = null)
     {
         $this->app = $app;
         $this->client = $client;
@@ -258,7 +258,7 @@ class OAuth2Client
      *
      * @throws FacebookResponseException
      */
-    protected function sendRequestWithClientParams($endpoint, array $params, $accessToken = null)
+    protected function sendRequestWithClientParams($endpoint, array $params, AccessToken|string|null $accessToken = null)
     {
         $params += $this->getClientParams();
 

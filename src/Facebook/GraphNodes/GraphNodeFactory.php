@@ -87,7 +87,7 @@ class GraphNodeFactory
      *
      * @throws FacebookSDKException
      */
-    public function makeGraphNode($subclassName = null)
+    public function makeGraphNode(?string $subclassName = null)
     {
         $this->validateResponseAsArray();
         $this->validateResponseCastableAsGraphNode();
@@ -189,7 +189,7 @@ class GraphNodeFactory
      *
      * @throws FacebookSDKException
      */
-    public function makeGraphEdge($subclassName = null, $auto_prefix = true)
+    public function makeGraphEdge(?string $subclassName = null, $auto_prefix = true)
     {
         $this->validateResponseAsArray();
         $this->validateResponseCastableAsGraphEdge();
@@ -253,7 +253,7 @@ class GraphNodeFactory
      *
      * @throws FacebookSDKException
      */
-    public function safelyMakeGraphNode(array $data, $subclassName = null)
+    public function safelyMakeGraphNode(array $data, ?string $subclassName = null)
     {
         $subclassName = $subclassName ?: static::BASE_GRAPH_NODE_CLASS;
         static::validateSubclass($subclassName);
@@ -296,7 +296,7 @@ class GraphNodeFactory
      *
      * @throws FacebookSDKException
      */
-    public function castAsGraphNodeOrGraphEdge(array $data, $subclassName = null, $parentKey = null, $parentNodeId = null)
+    public function castAsGraphNodeOrGraphEdge(array $data, ?string $subclassName = null, ?string $parentKey = null, ?string $parentNodeId = null)
     {
         if (isset($data['data'])) {
             // Create GraphEdge
@@ -325,7 +325,7 @@ class GraphNodeFactory
      *
      * @throws FacebookSDKException
      */
-    public function safelyMakeGraphEdge(array $data, $subclassName = null, $parentKey = null, $parentNodeId = null)
+    public function safelyMakeGraphEdge(array $data, ?string $subclassName = null, ?string $parentKey = null, ?string $parentNodeId = null)
     {
         if (!isset($data['data'])) {
             throw new FacebookSDKException('Cannot cast data to GraphEdge. Expected a "data" key.', 620);

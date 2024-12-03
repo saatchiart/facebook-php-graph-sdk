@@ -72,7 +72,7 @@ class FacebookResponse
      * @param int|null        $httpStatusCode
      * @param array|null      $headers
      */
-    public function __construct(FacebookRequest $request, $body = null, $httpStatusCode = null, array $headers = [])
+    public function __construct(FacebookRequest $request, ?string $body = null, ?int $httpStatusCode = null, array $headers = [])
     {
         $this->request = $request;
         $this->body = $body;
@@ -268,7 +268,7 @@ class FacebookResponse
      * @deprecated 5.0.0 getGraphObject() has been renamed to getGraphNode()
      * @todo v6: Remove this method
      */
-    public function getGraphObject($subclassName = null)
+    public function getGraphObject(?string $subclassName = null)
     {
         return $this->getGraphNode($subclassName);
     }
@@ -282,7 +282,7 @@ class FacebookResponse
      *
      * @throws FacebookSDKException
      */
-    public function getGraphNode($subclassName = null)
+    public function getGraphNode(?string $subclassName = null)
     {
         $factory = new GraphNodeFactory($this);
 
@@ -386,7 +386,7 @@ class FacebookResponse
      * @deprecated 5.0.0 getGraphList() has been renamed to getGraphEdge()
      * @todo v6: Remove this method
      */
-    public function getGraphList($subclassName = null, $auto_prefix = true)
+    public function getGraphList(?string $subclassName = null, $auto_prefix = true)
     {
         return $this->getGraphEdge($subclassName, $auto_prefix);
     }
@@ -401,7 +401,7 @@ class FacebookResponse
      *
      * @throws FacebookSDKException
      */
-    public function getGraphEdge($subclassName = null, $auto_prefix = true)
+    public function getGraphEdge(?string $subclassName = null, $auto_prefix = true)
     {
         $factory = new GraphNodeFactory($this);
 

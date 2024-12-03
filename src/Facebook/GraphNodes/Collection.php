@@ -63,7 +63,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
      *
      * @return mixed
      */
-    public function getField($name, $default = null)
+    public function getField($name, mixed $default = null)
     {
         if (isset($this->items[$name])) {
             return $this->items[$name];
@@ -83,7 +83,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate
      * @deprecated 5.0.0 getProperty() has been renamed to getField()
      * @todo v6: Remove this method
      */
-    public function getProperty($name, $default = null)
+    public function getProperty($name, mixed $default = null)
     {
         return $this->getField($name, $default);
     }
