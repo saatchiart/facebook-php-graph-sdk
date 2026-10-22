@@ -54,7 +54,7 @@ class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate,
      * @param AccessToken|string|null $accessToken
      * @param string|null             $graphVersion
      */
-    public function __construct(FacebookApp $app = null, array $requests = [], AccessToken|string|null $accessToken = null, ?string $graphVersion = null)
+    public function __construct(?FacebookApp $app = null, array $requests = [], AccessToken|string|null $accessToken = null, ?string $graphVersion = null)
     {
         parent::__construct($app, $accessToken, 'POST', '', [], null, $graphVersion);
 
@@ -65,14 +65,14 @@ class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate,
      * Adds a new request to the array.
      *
      * @param FacebookRequest|array $request
-     * @param string|null|array     $options Array of batch request options e.g. 'name', 'omit_response_on_success'.
+     * @param string|int|null|array $options Array of batch request options e.g. 'name', 'omit_response_on_success'.
      *                                       If a string is given, it is the value of the 'name' option.
      *
      * @return FacebookBatchRequest
      *
      * @throws \InvalidArgumentException
      */
-    public function add($request, string|null|array $options = null)
+    public function add($request, string|int|null|array $options = null)
     {
         if (is_array($request)) {
             foreach ($request as $key => $req) {
@@ -235,13 +235,13 @@ class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate,
      * Converts a Request entity into an array that is batch-friendly.
      *
      * @param FacebookRequest   $request       The request entity to convert.
-     * @param string|null|array $options       Array of batch request options e.g. 'name', 'omit_response_on_success'.
+     * @param string|int|null|array $options     Array of batch request options e.g. 'name', 'omit_response_on_success'.
      *                                         If a string is given, it is the value of the 'name' option.
      * @param string|null       $attachedFiles Names of files associated with the request.
      *
      * @return array
      */
-    public function requestEntityToBatchArray(FacebookRequest $request, string|null|array $options = null, ?string $attachedFiles = null)
+    public function requestEntityToBatchArray(FacebookRequest $request, string|int|null|array $options = null, ?string $attachedFiles = null)
     {
 
         if (null === $options) {
