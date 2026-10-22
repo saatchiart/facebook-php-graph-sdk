@@ -1,9 +1,7 @@
 <phpunit
+        beStrictAboutTestsThatDoNotTestAnything="false"
         colors="true"
         stderr="true"
-        convertErrorsToExceptions="true"
-        convertNoticesToExceptions="true"
-        convertWarningsToExceptions="true"
         stopOnFailure="false"
         bootstrap="tests/bootstrap.php">
     <testsuites>
