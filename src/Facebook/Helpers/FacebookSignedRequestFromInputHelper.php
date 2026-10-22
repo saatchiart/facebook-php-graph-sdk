@@ -59,7 +59,7 @@ abstract class FacebookSignedRequestFromInputHelper
      * @param FacebookClient $client       The client to make HTTP requests.
      * @param string|null    $graphVersion The version of Graph to use.
      */
-    public function __construct(FacebookApp $app, FacebookClient $client, $graphVersion = null)
+    public function __construct(FacebookApp $app, FacebookClient $client, ?string $graphVersion = null)
     {
         $this->app = $app;
         $graphVersion = $graphVersion ?: Facebook::DEFAULT_GRAPH_VERSION;
@@ -73,7 +73,7 @@ abstract class FacebookSignedRequestFromInputHelper
      *
      * @param string|null
      */
-    public function instantiateSignedRequest($rawSignedRequest = null)
+    public function instantiateSignedRequest(?string $rawSignedRequest = null)
     {
         $rawSignedRequest = $rawSignedRequest ?: $this->getRawSignedRequest();
 

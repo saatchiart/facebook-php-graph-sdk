@@ -48,7 +48,7 @@ class FacebookResponseException extends FacebookSDKException
      * @param FacebookResponse     $response          The response that threw the exception.
      * @param FacebookSDKException $previousException The more detailed exception.
      */
-    public function __construct(FacebookResponse $response, FacebookSDKException $previousException = null)
+    public function __construct(FacebookResponse $response, ?FacebookSDKException $previousException = null)
     {
         $this->response = $response;
         $this->responseData = $response->getDecodedBody();
@@ -154,7 +154,7 @@ class FacebookResponseException extends FacebookSDKException
      *
      * @return mixed
      */
-    private function get($key, $default = null)
+    private function get($key, mixed $default = null)
     {
         if (isset($this->responseData['error'][$key])) {
             return $this->responseData['error'][$key];

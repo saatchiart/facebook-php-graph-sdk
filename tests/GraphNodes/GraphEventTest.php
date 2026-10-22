@@ -27,14 +27,16 @@ use Facebook\FacebookResponse;
 use Mockery as m;
 use Facebook\GraphNodes\GraphNodeFactory;
 
-class GraphEventTest extends \PHPUnit_Framework_TestCase
+class GraphEventTest extends \PHPUnit\Framework\TestCase
 {
+    use \Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+
     /**
      * @var FacebookResponse
      */
     protected $responseMock;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->responseMock = m::mock('\Facebook\FacebookResponse');
     }

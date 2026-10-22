@@ -53,7 +53,7 @@ class SignedRequest
      * @param FacebookApp $facebookApp      The FacebookApp entity.
      * @param string|null $rawSignedRequest The raw signed request.
      */
-    public function __construct(FacebookApp $facebookApp, $rawSignedRequest = null)
+    public function __construct(FacebookApp $facebookApp, ?string $rawSignedRequest = null)
     {
         $this->app = $facebookApp;
 
@@ -94,7 +94,7 @@ class SignedRequest
      *
      * @return mixed|null
      */
-    public function get($key, $default = null)
+    public function get($key, mixed $default = null)
     {
         if (isset($this->payload[$key])) {
             return $this->payload[$key];

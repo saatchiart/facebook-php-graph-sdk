@@ -28,7 +28,7 @@ use Facebook\FacebookRequest;
 use Facebook\GraphNodes\GraphEdge;
 use Facebook\GraphNodes\GraphNode;
 
-class GraphEdgeTest extends \PHPUnit_Framework_TestCase
+class GraphEdgeTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
@@ -41,7 +41,7 @@ class GraphEdgeTest extends \PHPUnit_Framework_TestCase
         'previous' => 'https://graph.facebook.com/v7.12/998899/photos?pretty=0&limit=25&before=foo_before_cursor',
     ];
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $app = new FacebookApp('123', 'foo_app_secret');
         $this->request = new FacebookRequest(
@@ -55,11 +55,9 @@ class GraphEdgeTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @expectedException \Facebook\Exceptions\FacebookSDKException
-     */
     public function testNonGetRequestsWillThrow()
     {
+        $this->expectException(\Facebook\Exceptions\FacebookSDKException::class);
         $this->request->setMethod('POST');
         $graphEdge = new GraphEdge($this->request);
         $graphEdge->validateForPagination();

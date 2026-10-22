@@ -63,7 +63,7 @@ class GraphEdge extends Collection
      * @param string|null     $parentEdgeEndpoint The parent Graph edge endpoint that generated the list.
      * @param string|null     $subclassName       The subclass of the child GraphNode's.
      */
-    public function __construct(FacebookRequest $request, array $data = [], array $metaData = [], $parentEdgeEndpoint = null, $subclassName = null)
+    public function __construct(FacebookRequest $request, array $data = [], array $metaData = [], ?string $parentEdgeEndpoint = null, ?string $subclassName = null)
     {
         $this->request = $request;
         $this->metaData = $metaData;

@@ -56,7 +56,7 @@ class RequestBodyMultipart implements RequestBodyInterface
      * @param array  $files    The files to send with this request.
      * @param string $boundary Provide a specific boundary.
      */
-    public function __construct(array $params = [], array $files = [], $boundary = null)
+    public function __construct(array $params = [], array $files = [], ?string $boundary = null)
     {
         $this->params = $params;
         $this->files = $files;
@@ -144,7 +144,7 @@ class RequestBodyMultipart implements RequestBodyInterface
      */
     private function getNestedParams(array $params)
     {
-        $query = http_build_query($params, null, '&');
+        $query = http_build_query($params, '', '&');
         $params = explode('&', $query);
         $result = [];
 
